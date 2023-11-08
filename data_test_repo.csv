@@ -1,4 +1,4 @@
-type,gfa,gla,bua,residents,employees,visitors,parking
+typology,gfa,gla,bua,residents,employees,visitors,parking
 residential,0.6,0.6,0.6,0.6,0.6,0.6,0.6
 office,0.5,0.5,0.5,0.5,0.5,0.5,0.5
 hotel,0.005,0.005,0.005,0.005,0.005,0.005,0.005
