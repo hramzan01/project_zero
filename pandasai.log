@@ -7372,3 +7372,508 @@ def analyze_data(dfs: list[pd.DataFrame]) ->dict:
         ```
 2023-10-18 11:36:30 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
 2023-10-18 11:36:30 [INFO] Executed in: 57.018778800964355s
+2023-10-19 11:24:45 [INFO] Question: plot the areas per asset for the CITY SOUTH vs CITY NORTH. and make the colours slightly transparent too
+2023-10-19 11:24:46 [INFO] Running PandasAI with openai LLM...
+2023-10-19 11:24:46 [INFO] Prompt ID: 61875d7a-e964-48d2-985b-7165d1d47b17
+2023-10-19 11:24:46 [INFO] Using cached response
+2023-10-19 11:24:46 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df = dfs[0].copy()
+    
+    # Process
+    df['AREA'] = pd.to_numeric(df['AREA'], errors='coerce')
+    df['CITY DISTRICT'] = df['CITY DISTRICT'].str.upper()
+    
+    # Analyze
+    city_south = df[df['CITY DISTRICT'] == 'CITY SOUTH']
+    city_north = df[df['CITY DISTRICT'] == 'CITY NORTH']
+    
+    fig, ax = plt.subplots()
+    ax.bar(city_south['ASSET'], city_south['AREA'], alpha=0.7, label='CITY SOUTH')
+    ax.bar(city_north['ASSET'], city_north['AREA'], alpha=0.7, label='CITY NORTH')
+    ax.set_xlabel('Asset')
+    ax.set_ylabel('Area')
+    ax.set_title('Areas per Asset')
+    ax.legend()
+    
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-19 11:24:46 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0].copy()
+    df['AREA'] = pd.to_numeric(df['AREA'], errors='coerce')
+    df['CITY DISTRICT'] = df['CITY DISTRICT'].str.upper()
+    city_south = df[df['CITY DISTRICT'] == 'CITY SOUTH']
+    city_north = df[df['CITY DISTRICT'] == 'CITY NORTH']
+    fig, ax = plt.subplots()
+    ax.bar(city_south['ASSET'], city_south['AREA'], alpha=0.7, label='CITY SOUTH')
+    ax.bar(city_north['ASSET'], city_north['AREA'], alpha=0.7, label='CITY NORTH')
+    ax.set_xlabel('Asset')
+    ax.set_ylabel('Area')
+    ax.set_title('Areas per Asset')
+    ax.legend()
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.savefig('temp_chart.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'temp_chart.png'}
+        ```
+2023-10-19 11:25:03 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
+2023-10-19 11:25:04 [INFO] Executed in: 18.15802764892578s
+2023-10-19 11:25:14 [INFO] Question: plot in a bar chart the areas of each asset
+2023-10-19 11:25:14 [INFO] Running PandasAI with openai LLM...
+2023-10-19 11:25:14 [INFO] Prompt ID: 17e5650f-c211-45d3-a23d-4c3cd851cc32
+2023-10-19 11:25:14 [INFO] Using cached response
+2023-10-19 11:25:14 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df = dfs[0]
+    
+    # Process
+    asset_areas = df.groupby('ASSET')['AREA'].sum().reset_index()
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    plt.bar(asset_areas['ASSET'], asset_areas['AREA'])
+    plt.xlabel('Asset')
+    plt.ylabel('Area')
+    plt.title('Areas of Each Asset')
+    plt.xticks(rotation=45)
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-19 11:25:14 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0]
+    asset_areas = df.groupby('ASSET')['AREA'].sum().reset_index()
+    plt.figure(figsize=(10, 6))
+    plt.bar(asset_areas['ASSET'], asset_areas['AREA'])
+    plt.xlabel('Asset')
+    plt.ylabel('Area')
+    plt.title('Areas of Each Asset')
+    plt.xticks(rotation=45)
+    plt.savefig('temp_chart.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'temp_chart.png'}
+        ```
+2023-10-19 11:25:15 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
+2023-10-19 11:25:15 [INFO] Executed in: 1.1797919273376465s
+2023-10-19 11:25:33 [INFO] Question: plot heatmap of different areas by asset
+2023-10-19 11:25:33 [INFO] Running PandasAI with openai LLM...
+2023-10-19 11:25:33 [INFO] Prompt ID: 13961445-9415-436d-b5ee-b31406e77070
+2023-10-19 11:25:33 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 8521 rows and 61 columns.
+This is the metadata of the dataframe dfs[0]:
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA B,PLB,CC-001-01_A,CC-001-01_A-3186-GA LE...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,1,0.0,NO PROVISION,0,0,0.0,,0.0,3186,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,3186,0,0,,0.0,CITY SOUTH,,CC-001-01
+PLAZA,PLAZA A,PLA,CC-001-01_A,CC-001-01_A-24252-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,1,0.0,NO PROVISION,0,0,0.0,,0.0,24252,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,24252,0,0,,0.0,CITY SOUTH,,CC-001-01
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+<conversation>
+User 1: plot heatmap of different areas by asset
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-19 11:26:19 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df = dfs[0].copy()
+    
+    # Process
+    asset_areas = df.groupby('ASSET')['AREA'].sum().reset_index()
+    
+    # Analyze
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x='ASSET', y='AREA', data=asset_areas)
+    plt.xlabel('Asset')
+    plt.ylabel('Area')
+    plt.title('Area by Asset')
+    plt.xticks(rotation=45)
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-19 11:26:19 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0].copy()
+    asset_areas = df.groupby('ASSET')['AREA'].sum().reset_index()
+    plt.figure(figsize=(10, 6))
+    sns.barplot(x='ASSET', y='AREA', data=asset_areas)
+    plt.xlabel('Asset')
+    plt.ylabel('Area')
+    plt.title('Area by Asset')
+    plt.xticks(rotation=45)
+    plt.savefig('temp_chart.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'temp_chart.png'}
+        ```
+2023-10-19 11:26:22 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
+2023-10-19 11:26:23 [INFO] Executed in: 49.47509455680847s
+2023-10-19 11:27:11 [INFO] Question: can you redo the table so all the area values are appended with a m2 at the end
+2023-10-19 11:27:11 [INFO] Running PandasAI with openai LLM...
+2023-10-19 11:27:11 [INFO] Prompt ID: 466e654c-3f28-40f2-950d-13b6481bb9bf
+2023-10-19 11:27:11 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 8521 rows and 61 columns.
+This is the metadata of the dataframe dfs[0]:
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA B,PLB,CC-001-01_A,CC-001-01_A-3186-GA LE...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,1,0.0,NO PROVISION,0,0,0.0,,0.0,3186,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,3186,0,0,,0.0,CITY SOUTH,,CC-001-01
+PLAZA,PLAZA A,PLA,CC-001-01_A,CC-001-01_A-24252-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,1,0.0,NO PROVISION,0,0,0.0,,0.0,24252,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,24252,0,0,,0.0,CITY SOUTH,,CC-001-01
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+<conversation>
+User 1: can you redo the table so all the area values are appended with a m2 at the end
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-20 09:29:55 [INFO] Question: plot the areas per asset for the CITY SOUTH vs CITY NORTH. and make the colours slightly transparent too
+2023-10-20 09:29:55 [INFO] Running PandasAI with openai LLM...
+2023-10-20 09:29:55 [INFO] Prompt ID: 53dc0fcc-548b-481d-8d35-da323c4c56ce
+2023-10-20 09:29:55 [INFO] Using cached response
+2023-10-20 09:29:55 [INFO] Code generated:
+```
+# TODO import all the dependencies required
+import pandas as pd
+import matplotlib.pyplot as plt
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    # Prepare
+    df = dfs[0].copy()
+    
+    # Process
+    df['AREA'] = pd.to_numeric(df['AREA'], errors='coerce')
+    df['CITY DISTRICT'] = df['CITY DISTRICT'].str.upper()
+    
+    # Analyze
+    city_south = df[df['CITY DISTRICT'] == 'CITY SOUTH']
+    city_north = df[df['CITY DISTRICT'] == 'CITY NORTH']
+    
+    fig, ax = plt.subplots()
+    ax.bar(city_south['ASSET'], city_south['AREA'], alpha=0.7, label='CITY SOUTH')
+    ax.bar(city_north['ASSET'], city_north['AREA'], alpha=0.7, label='CITY NORTH')
+    ax.set_xlabel('Asset')
+    ax.set_ylabel('Area')
+    ax.set_title('Areas per Asset')
+    ax.legend()
+    
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.savefig('temp_chart.png')
+    plt.close()
+    
+    return {"type": "plot", "value": "temp_chart.png"}
+```
+
+2023-10-20 09:29:55 [INFO] 
+Code running:
+```
+def analyze_data(dfs: list[pd.DataFrame]) ->dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+    df = dfs[0].copy()
+    df['AREA'] = pd.to_numeric(df['AREA'], errors='coerce')
+    df['CITY DISTRICT'] = df['CITY DISTRICT'].str.upper()
+    city_south = df[df['CITY DISTRICT'] == 'CITY SOUTH']
+    city_north = df[df['CITY DISTRICT'] == 'CITY NORTH']
+    fig, ax = plt.subplots()
+    ax.bar(city_south['ASSET'], city_south['AREA'], alpha=0.7, label='CITY SOUTH')
+    ax.bar(city_north['ASSET'], city_north['AREA'], alpha=0.7, label='CITY NORTH')
+    ax.set_xlabel('Asset')
+    ax.set_ylabel('Area')
+    ax.set_title('Areas per Asset')
+    ax.legend()
+    plt.xticks(rotation=90)
+    plt.tight_layout()
+    plt.savefig('temp_chart.png')
+    plt.close()
+    return {'type': 'plot', 'value': 'temp_chart.png'}
+        ```
+2023-10-20 09:30:01 [INFO] Answer: {'type': 'plot', 'value': 'temp_chart.png'}
+2023-10-20 09:30:01 [INFO] Executed in: 6.586605548858643s
+2023-10-20 09:30:13 [INFO] Question: can you redo the table so all the area values are appended with a m2 at the end
+2023-10-20 09:30:13 [INFO] Running PandasAI with openai LLM...
+2023-10-20 09:30:13 [INFO] Prompt ID: a894628d-a498-447a-83e6-461b8ea149ab
+2023-10-20 09:30:13 [INFO] Using prompt: 
+You are provided with the following pandas DataFrames:
+
+<dataframe>
+Dataframe dfs[0], with 8521 rows and 61 columns.
+This is the metadata of the dataframe dfs[0]:
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA B,PLB,CC-001-01_A,CC-001-01_A-3186-GA LE...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,1,0.0,NO PROVISION,0,0,0.0,,0.0,3186,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,3186,0,0,,0.0,CITY SOUTH,,CC-001-01
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA A,PLA,CC-001-01_A,CC-001-01_A-24252-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,1,0.0,NO PROVISION,0,0,0.0,,0.0,24252,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,24252,0,0,,0.0,CITY SOUTH,,CC-001-01
+</dataframe>
+
+<conversation>
+User 1: can you redo the table so all the area values are appended with a m2 at the end
+</conversation>
+
+This is the initial python code to be updated:
+```python
+# TODO import all the dependencies required
+import pandas as pd
+
+def analyze_data(dfs: list[pd.DataFrame]) -> dict:
+    """
+    Analyze the data
+    1. Prepare: Preprocessing and cleaning data if necessary
+    2. Process: Manipulating data for analysis (grouping, filtering, aggregating, etc.)
+    3. Analyze: Conducting the actual analysis (if the user asks to plot a chart save it to an image in temp_chart.png and do not show the chart.)
+    At the end, return a dictionary of:
+    - type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": "The highest salary is $9,000." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+    """
+```
+
+Using the provided dataframes (`dfs`), update the python code based on the last question in the conversation.
+
+Updated code:
+
+2023-10-20 09:30:13 [WARNING] Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001EC5CC613D0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /v1/chat/completions
+2023-10-20 09:30:13 [WARNING] Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001EC600CD910>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /v1/chat/completions
