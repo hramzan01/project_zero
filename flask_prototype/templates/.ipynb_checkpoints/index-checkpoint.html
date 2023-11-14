@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask SQLite Table Viewer</title>
+</head>
+<body>
+    <h1>Select a Table</h1>
+    <form method="post" action="/">
+        <label for="table">Choose a table:</label>
+        <select name="table" id="table">
+            {% for table in tables %}
+                <option value="{{ table }}">{{ table }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Show Table</button>
+    </form>
+
+    {% if table_data is not none and table_data.size > 0 %}
+        {% if bar_chart %}
+            <h2>Rating System Distribution</h2>
+            {{ bar_chart|safe }}
+        {% endif %}
+    
+        <h2>Table Data</h2>
+        {{ table_data.to_html()|safe }}
+    {% endif %}
+</body>
+</html>
