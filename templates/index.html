@@ -19,6 +19,11 @@
     </form>
 
     {% if table_data is not none and table_data.size > 0 %}
+        {% if bar_chart %}
+            <h2>Rating System Distribution</h2>
+            {{ bar_chart|safe }}
+        {% endif %}
+    
         <h2>Table Data</h2>
         {{ table_data.to_html()|safe }}
     {% endif %}
