@@ -5,9 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask SQLite Table Viewer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Select a Table</h1>
+    <h1>Project_Zero: Data Analytics</h1>
     <form method="post" action="/">
         <label for="table">Choose a table:</label>
         <select name="table" id="table">
@@ -20,11 +21,12 @@
 
     {% if table_data is not none and table_data.size > 0 %}
         {% if bar_chart %}
-            <h2>Rating System Distribution</h2>
+            <h2>{{ table_name }}</h2>
             {{ bar_chart|safe }}
         {% endif %}
     
         <h2>Table Data</h2>
+        <div>
         {{ table_data.to_html()|safe }}
     {% endif %}
 </body>

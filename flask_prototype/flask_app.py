@@ -3,10 +3,10 @@ import sqlite3
 import pandas as pd
 import plotly.express as px
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 # Replace this with your SQLite database connection details
-DATABASE = 'db_project_zero.sqlite'
+DATABASE = 'C:/Users/hramzan/documents/github/dapzero/db_project_zero.sqlite'
 
 def fetch_tables():
     conn = sqlite3.connect(DATABASE)
