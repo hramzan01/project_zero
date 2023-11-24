@@ -7877,3 +7877,713 @@ Updated code:
 
 2023-10-20 09:30:13 [WARNING] Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001EC5CC613D0>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /v1/chat/completions
 2023-10-20 09:30:13 [WARNING] Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x000001EC600CD910>: Failed to establish a new connection: [Errno 11001] getaddrinfo failed')': /v1/chat/completions
+2023-11-22 22:50:36 [INFO] Question: plot the areas per asset for the CITY SOUTH vs CITY NORTH. and make the colours slightly transparent too
+2023-11-22 22:50:36 [INFO] Running PandasAI with openai LLM...
+2023-11-22 22:50:36 [INFO] Prompt ID: d3a08749-117f-4459-9300-740924f71cdd
+2023-11-22 22:50:36 [INFO] Executing Step 0: CacheLookup
+2023-11-22 22:50:36 [INFO] Executing Step 1: PromptGeneration
+2023-11-22 22:50:36 [INFO] Using prompt: <dataframe>
+dfs[0]:8521x61
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+```
+
+Q: plot the areas per asset for the CITY SOUTH vs CITY NORTH. and make the colours slightly transparent ...
+Return the full updated code:
+2023-11-22 22:50:36 [INFO] Executing Step 2: CodeGenerator
+2023-11-22 22:52:16 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+
+# Preprocessing/Cleaning
+df = dfs[0]
+df = df[['ASSET', 'AREA', 'CITY DISTRICT']]
+df = df.dropna()
+
+# Data Manipulation
+df_city_south = df[df['CITY DISTRICT'] == 'CITY SOUTH']
+df_city_north = df[df['CITY DISTRICT'] == 'CITY NORTH']
+
+area_per_asset_city_south = df_city_south.groupby('ASSET')['AREA'].sum()
+area_per_asset_city_north = df_city_north.groupby('ASSET')['AREA'].sum()
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(area_per_asset_city_south.index, area_per_asset_city_south, alpha=0.7, label='CITY SOUTH')
+plt.bar(area_per_asset_city_north.index, area_per_asset_city_north, alpha=0.7, label='CITY NORTH')
+plt.xlabel('Asset')
+plt.ylabel('Area')
+plt.title('Areas per Asset')
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot to a file
+plot_path = 'areas_per_asset.png'
+plt.savefig(plot_path)
+
+# Return the path of the plot
+result = {
+    "type": "plot",
+    "value": plot_path
+}
+result
+            ```
+            
+2023-11-22 22:52:16 [INFO] Executing Step 3: CachePopulation
+2023-11-22 22:52:16 [INFO] Executing Step 4: CodeExecution
+2023-11-22 22:52:16 [INFO] Saving charts to /home/hramzan/projects/dapzero/exports/charts/temp_chart.png
+2023-11-22 22:52:16 [INFO] 
+Code running:
+```
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/home/hramzan/projects/dapzero/exports/charts/temp_chart.png" }
+"""
+df = dfs[0]
+df = df[['ASSET', 'AREA', 'CITY DISTRICT']]
+df = df.dropna()
+df_city_south = df[df['CITY DISTRICT'] == 'CITY SOUTH']
+df_city_north = df[df['CITY DISTRICT'] == 'CITY NORTH']
+area_per_asset_city_south = df_city_south.groupby('ASSET')['AREA'].sum()
+area_per_asset_city_north = df_city_north.groupby('ASSET')['AREA'].sum()
+plt.figure(figsize=(10, 6))
+plt.bar(area_per_asset_city_south.index, area_per_asset_city_south, alpha=0.7, label='CITY SOUTH')
+plt.bar(area_per_asset_city_north.index, area_per_asset_city_north, alpha=0.7, label='CITY NORTH')
+plt.xlabel('Asset')
+plt.ylabel('Area')
+plt.title('Areas per Asset')
+plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
+plot_path = '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'
+plt.savefig(plot_path)
+result = {'type': 'plot', 'value': plot_path}
+result
+        ```
+2023-11-22 22:52:17 [INFO] Executing Step 5: ResultValidation
+2023-11-22 22:52:17 [INFO] Answer: {'type': 'plot', 'value': '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'}
+2023-11-22 22:52:17 [INFO] Executed in: 100.9806764125824s
+2023-11-22 22:52:17 [INFO] Executing Step 6: ResultParsing
+2023-11-22 22:52:18 [INFO] Question: plot the sum of areas per asset
+2023-11-22 22:52:18 [INFO] Running PandasAI with openai LLM...
+2023-11-22 22:52:18 [INFO] Prompt ID: 2d24305c-d7ce-414b-aaf7-5c3438d52abb
+2023-11-22 22:52:18 [INFO] Executing Step 0: CacheLookup
+2023-11-22 22:52:18 [INFO] Executing Step 1: PromptGeneration
+2023-11-22 22:52:19 [INFO] Using prompt: <dataframe>
+dfs[0]:8521x61
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+```
+
+Q: plot the sum of areas per asset
+Return the full updated code:
+2023-11-22 22:52:19 [INFO] Executing Step 2: CodeGenerator
+2023-11-22 22:53:11 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+
+# Preprocessing/Cleaning
+df = dfs[0]
+
+# Data Manipulation
+sum_areas = df.groupby('ASSET')['AREA'].sum().reset_index()
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.bar(sum_areas['ASSET'], sum_areas['AREA'])
+plt.xlabel('Asset')
+plt.ylabel('Sum of Areas')
+plt.title('Sum of Areas per Asset')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot to a file
+plot_path = 'sum_areas_plot.png'
+plt.savefig(plot_path)
+
+# Return the plot path
+result = {
+    "type": "plot",
+    "value": plot_path
+}
+
+result
+            ```
+            
+2023-11-22 22:53:11 [INFO] Executing Step 3: CachePopulation
+2023-11-22 22:53:11 [INFO] Executing Step 4: CodeExecution
+2023-11-22 22:53:11 [INFO] Saving charts to /home/hramzan/projects/dapzero/exports/charts/temp_chart.png
+2023-11-22 22:53:12 [INFO] 
+Code running:
+```
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/home/hramzan/projects/dapzero/exports/charts/temp_chart.png" }
+"""
+df = dfs[0]
+sum_areas = df.groupby('ASSET')['AREA'].sum().reset_index()
+plt.figure(figsize=(10, 6))
+plt.bar(sum_areas['ASSET'], sum_areas['AREA'])
+plt.xlabel('Asset')
+plt.ylabel('Sum of Areas')
+plt.title('Sum of Areas per Asset')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plot_path = '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'
+plt.savefig(plot_path)
+result = {'type': 'plot', 'value': plot_path}
+result
+        ```
+2023-11-22 22:53:12 [INFO] Executing Step 5: ResultValidation
+2023-11-22 22:53:12 [INFO] Answer: {'type': 'plot', 'value': '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'}
+2023-11-22 22:53:12 [INFO] Executed in: 53.41721796989441s
+2023-11-22 22:53:12 [INFO] Executing Step 6: ResultParsing
+2023-11-22 22:58:45 [INFO] Question: plot the distribution of assets by area in E-GAMING PRECINCT 
+2023-11-22 22:58:45 [INFO] Running PandasAI with openai LLM...
+2023-11-22 22:58:45 [INFO] Prompt ID: c8b7351f-7ecf-4de5-ba78-a92007121962
+2023-11-22 22:58:45 [INFO] Executing Step 0: CacheLookup
+2023-11-22 22:58:45 [INFO] Executing Step 1: PromptGeneration
+2023-11-22 22:58:45 [INFO] Using prompt: <dataframe>
+dfs[0]:8521x61
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+```
+
+Q: plot the distribution of assets by area in E-GAMING PRECINCT 
+Return the full updated code:
+2023-11-22 22:58:45 [INFO] Executing Step 2: CodeGenerator
+2023-11-22 22:59:47 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+
+# Step 2: Data Manipulation
+# Filter the dataframe for E-GAMING PRECINCT
+egaming_df = dfs[0][dfs[0]['PRECINCT'] == 'E-GAMING PRECINCT']
+
+# Group the assets by area and count the number of assets in each area
+asset_counts = egaming_df.groupby('AREA').size()
+
+# Step 3: Analyze Data
+# Plot the distribution of assets by area
+plt.figure(figsize=(10, 6))
+asset_counts.plot(kind='bar')
+plt.xlabel('Area')
+plt.ylabel('Number of Assets')
+plt.title('Distribution of Assets by Area in E-GAMING PRECINCT')
+plt.xticks(rotation=45)
+plt.tight_layout()
+
+# Save the plot to a file
+plot_path = 'assets_by_area.png'
+plt.savefig(plot_path)
+
+# Return the path of the plot
+result = {
+    "type": "plot",
+    "value": plot_path
+}
+
+result
+            ```
+            
+2023-11-22 22:59:48 [INFO] Executing Step 3: CachePopulation
+2023-11-22 22:59:48 [INFO] Executing Step 4: CodeExecution
+2023-11-22 22:59:48 [INFO] Saving charts to /home/hramzan/projects/dapzero/exports/charts/temp_chart.png
+2023-11-22 22:59:48 [INFO] 
+Code running:
+```
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/home/hramzan/projects/dapzero/exports/charts/temp_chart.png" }
+"""
+egaming_df = dfs[0][dfs[0]['PRECINCT'] == 'E-GAMING PRECINCT']
+asset_counts = egaming_df.groupby('AREA').size()
+plt.figure(figsize=(10, 6))
+asset_counts.plot(kind='bar')
+plt.xlabel('Area')
+plt.ylabel('Number of Assets')
+plt.title('Distribution of Assets by Area in E-GAMING PRECINCT')
+plt.xticks(rotation=45)
+plt.tight_layout()
+plot_path = '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'
+plt.savefig(plot_path)
+result = {'type': 'plot', 'value': plot_path}
+result
+        ```
+2023-11-22 22:59:49 [INFO] Executing Step 5: ResultValidation
+2023-11-22 22:59:49 [INFO] Answer: {'type': 'plot', 'value': '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'}
+2023-11-22 22:59:49 [INFO] Executed in: 64.75927567481995s
+2023-11-22 22:59:49 [INFO] Executing Step 6: ResultParsing
+2023-11-22 23:00:49 [INFO] Question: give me a pie chart of the sum of areas per precint
+2023-11-22 23:00:49 [INFO] Running PandasAI with openai LLM...
+2023-11-22 23:00:49 [INFO] Prompt ID: 8da7a593-b1d4-4f3d-9c48-327def7ee8db
+2023-11-22 23:00:49 [INFO] Executing Step 0: CacheLookup
+2023-11-22 23:00:49 [INFO] Executing Step 1: PromptGeneration
+2023-11-22 23:00:49 [INFO] Using prompt: <dataframe>
+dfs[0]:8521x61
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+```
+
+Q: give me a pie chart of the sum of areas per precint
+Return the full updated code:
+2023-11-22 23:00:49 [INFO] Executing Step 2: CodeGenerator
+2023-11-22 23:01:41 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+
+# Preprocessing/Cleaning
+df = dfs[0]
+
+# Data Manipulation
+df_grouped = df.groupby('PRECINCT')['AREA'].sum().reset_index()
+
+# Create Pie Chart
+plt.figure(figsize=(8, 6))
+plt.pie(df_grouped['AREA'], labels=df_grouped['PRECINCT'], autopct='%1.1f%%')
+plt.title('Sum of Areas per Precinct')
+
+# Save the chart to a file
+chart_path = 'sum_of_areas_per_precinct.png'
+plt.savefig(chart_path)
+
+# Return the path of the chart file
+result = {
+    "type": "plot",
+    "value": chart_path
+}
+
+result
+            ```
+            
+2023-11-22 23:01:41 [INFO] Executing Step 3: CachePopulation
+2023-11-22 23:01:41 [INFO] Executing Step 4: CodeExecution
+2023-11-22 23:01:41 [INFO] Saving charts to /home/hramzan/projects/dapzero/exports/charts/temp_chart.png
+2023-11-22 23:01:41 [INFO] 
+Code running:
+```
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/home/hramzan/projects/dapzero/exports/charts/temp_chart.png" }
+"""
+df = dfs[0]
+df_grouped = df.groupby('PRECINCT')['AREA'].sum().reset_index()
+plt.figure(figsize=(8, 6))
+plt.pie(df_grouped['AREA'], labels=df_grouped['PRECINCT'], autopct='%1.1f%%')
+plt.title('Sum of Areas per Precinct')
+chart_path = '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'
+plt.savefig(chart_path)
+result = {'type': 'plot', 'value': chart_path}
+result
+        ```
+2023-11-22 23:01:42 [INFO] Executing Step 5: ResultValidation
+2023-11-22 23:01:42 [INFO] Answer: {'type': 'plot', 'value': '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'}
+2023-11-22 23:01:42 [INFO] Executed in: 52.503974199295044s
+2023-11-22 23:01:42 [INFO] Executing Step 6: ResultParsing
+2023-11-22 23:01:42 [INFO] Question: give me a pie chart of the sum of areas per precinct
+2023-11-22 23:01:42 [INFO] Running PandasAI with openai LLM...
+2023-11-22 23:01:42 [INFO] Prompt ID: cb637c5d-8f10-43ad-abf3-7b5fcf55238e
+2023-11-22 23:01:42 [INFO] Executing Step 0: CacheLookup
+2023-11-22 23:01:42 [INFO] Executing Step 1: PromptGeneration
+2023-11-22 23:01:42 [INFO] Using prompt: <dataframe>
+dfs[0]:8521x61
+ASSET,TYPE,TYPOLOGY,UNIQUE ID,INDEX,PHASE,PRECINCT,PARKING RATIO,PODIUM HEIGHT,TYPICAL FLOOR HEIGHT,PERMANENT SEATING,TEMPORARY SEATING,PUBLIC REALM,LEVEL,RATIO VALUES,PLOT,SUB-PLOT,EFFICIENCY,PARKING FORMULA,RESIDENTIAL POPULATION,AVG UNIT,GFA,TOTAL KEYS,EMPLOYEE RATE,AREA,CUSTOM COUNT,VISITOR RATE,GFA* EMPLOYEE RATE,SEATS*EMPLOYEE RATE,GLA*EMPLOYEE RATE,TOTAL SEATS,BUA,*TOTAL KEYS*EMPLOYEE RATE,NLA,GLA,*CUSTOM COUNT * EMPLOYEE RATE,EMPLOYEE RATE * (GFA*VISITOR RATE),EMPLOYEE TOTALS,GFA*VISITOR RATE,EMPLOYEE TOTAL*VISITOR RATE,RESI RATE * VISITOR RATE,TOTAL KEYS * VISITOR RATE,TOTAL SEATS * VISITOR RATE,GLA * VISITOR RATE,VISITOR TOTALS,*RESIDENTIAL TOTALS,*POPULATION TOTALS,BUILDING FOOTPRINT,PARKING AVAILABLE,QQ_1E_DETAILED RESID POP.TOTAL RESID POPULATION,QQ_1E_DETAILED RESID POP.NEW RESI *RATE,QQ_1E_DETAILED RESID POP.TOTAL RESIDENTIAL UNITS,MERGED TOTAL VISITORS,SUB PLOT AREA,CAPACITY,AVERAGE ROOM UNIT,TOTAL UNITS/KEYS,PARKING REQUIRED,CITY DISTRICT,*DETAILED RESI POPULATION,MERGED SUB-PLOT
+PLAZA,PLAZA C,PLC,CC-001-00_0,CC-001-00_0-9637-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9637,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9637,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-22371-GA L...,1,STADIUM PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,22371,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,22371,0,0,,0.0,CITY SOUTH,,CC-001-00
+PLAZA,PLAZA D,PLD,CC-001-00_0,CC-001-00_0-9991-GA LE...,1,WEST CLIFF PRECINCT,0,0.0,0.0,0,0,Yes,GA LEVEL AOD,0.0,CC-001,0,0.0,NO PROVISION,0,0,0.0,,0.0,9991,1,0.0,,,,0,0,,0.0,0,,,0,,,,,0,,0,0.0,0.0,0,0.0,,,,0.0,9991,0,0,,0.0,CITY SOUTH,,CC-001-00
+</dataframe>
+
+
+
+
+Update this initial code:
+```python
+# TODO: import the required dependencies
+import pandas as pd
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+```
+
+Q: give me a pie chart of the sum of areas per precinct
+Return the full updated code:
+2023-11-22 23:01:42 [INFO] Executing Step 2: CodeGenerator
+2023-11-22 23:02:34 [INFO] Code generated:
+            ```
+            # TODO: import the required dependencies
+import pandas as pd
+import matplotlib.pyplot as plt
+
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "temp_chart.png" }
+"""
+
+# Preprocessing/Cleaning
+df = dfs[0]
+
+# Data Manipulation
+sum_area_per_precinct = df.groupby('PRECINCT')['AREA'].sum()
+
+# Create Pie Chart
+plt.figure(figsize=(8, 6))
+plt.pie(sum_area_per_precinct, labels=sum_area_per_precinct.index, autopct='%1.1f%%')
+plt.title('Sum of Areas per Precinct')
+
+# Save the chart to a file
+chart_path = 'sum_area_per_precinct_chart.png'
+plt.savefig(chart_path)
+
+# Return the path of the chart file
+result = {
+    "type": "plot",
+    "value": chart_path
+}
+
+result
+            ```
+            
+2023-11-22 23:02:34 [INFO] Executing Step 3: CachePopulation
+2023-11-22 23:02:34 [INFO] Executing Step 4: CodeExecution
+2023-11-22 23:02:35 [INFO] Saving charts to /home/hramzan/projects/dapzero/exports/charts/temp_chart.png
+2023-11-22 23:02:35 [INFO] 
+Code running:
+```
+"""
+The variable `dfs: list[pd.DataFrame]` is already declared.
+1. Prep: preprocessing/cleaning
+2. Proc: data manipulation (group, filter, aggregate)
+3. Analyze data
+If the user requests to create a chart, utilize the Python matplotlib library to generate high-quality graphics that will be saved directly to a file.
+
+Return a "result" variable dict:
+- type (possible values "string", "number", "dataframe", "plot")
+    - value (can be a string, a dataframe or the path of the plot, NOT a dictionary)
+    Examples: 
+        { "type": "string", "value": f"The highest salary is {highest_salary}." }
+        or
+        { "type": "number", "value": 125 }
+        or
+        { "type": "dataframe", "value": pd.DataFrame({...}) }
+        or
+        { "type": "plot", "value": "/home/hramzan/projects/dapzero/exports/charts/temp_chart.png" }
+"""
+df = dfs[0]
+sum_area_per_precinct = df.groupby('PRECINCT')['AREA'].sum()
+plt.figure(figsize=(8, 6))
+plt.pie(sum_area_per_precinct, labels=sum_area_per_precinct.index, autopct='%1.1f%%')
+plt.title('Sum of Areas per Precinct')
+chart_path = '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'
+plt.savefig(chart_path)
+result = {'type': 'plot', 'value': chart_path}
+result
+        ```
+2023-11-22 23:02:35 [INFO] Executing Step 5: ResultValidation
+2023-11-22 23:02:35 [INFO] Answer: {'type': 'plot', 'value': '/home/hramzan/projects/dapzero/exports/charts/temp_chart.png'}
+2023-11-22 23:02:35 [INFO] Executed in: 52.82509422302246s
+2023-11-22 23:02:35 [INFO] Executing Step 6: ResultParsing
