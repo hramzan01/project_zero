@@ -6,7 +6,7 @@ import plotly.express as px
 app = Flask(__name__, static_folder='static')
 
 # Replace this with your SQLite database connection details
-DATABASE = 'db_project_zero.sqlite'
+DATABASE = 'data/db_project_zero.sqlite'
 
 def fetch_tables():
     conn = sqlite3.connect(DATABASE)
