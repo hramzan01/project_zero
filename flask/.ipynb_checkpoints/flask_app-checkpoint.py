@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import sqlite3
 import pandas as pd
 import plotly.express as px
+import os
 
 app = Flask(__name__, static_folder='static')
 
