@@ -24,3 +24,21 @@ class ProjectZero:
             data[key] = df
             
         return data
+
+    def server_grab(self):
+
+        root_path = os.path.dirname(__file__)
+        csv_path = os.path.abspath(os.path.join(root_path, '..', 'data', 'csv'))
+        #server_path = os.path.abspath(r'X:\13470_Project_Zero\00_Production\00_BIM\01_Schedules\DataSources\00_Hangzhou_RhinoSourceSchedule.csv')
+        server_path = input('Specify file path from server➡️:')
+
+        df = pd.read_csv(server_path)
+        output = df.to_csv(os.path.abspath(os.path.join(csv_path, 'data_city_hz.csv')), index=False)
+
+        print('--data transfer complete!--')
+
+        return output
+
+
+
+    
