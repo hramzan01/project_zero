@@ -13,8 +13,12 @@ def csv_to_sqlite(csv_file, conn):
     # Save DataFrame to SQLite database
     df.to_sql(table_name, conn, index=False, if_exists='replace')
 
-# Connect to SQLite database in the current folder
-db_file = 'db_project_zero.sqlite'  
+# Define the parent folder and the data/sqlite folder
+parent_folder = '..'  # Assuming your parent folder is one level above the current script
+sqlite_folder = os.path.join(parent_folder, 'data', 'sqlite')
+
+# Connect to SQLite database in the sqlite_folder
+db_file = os.path.join(sqlite_folder, 'db_project_zero.sqlite')
 conn = sqlite3.connect(db_file)
 
 # Get a list of all CSV files in the current folder
