@@ -26,7 +26,7 @@ def test_unique_check():
 
 
 # check data type
-def test_productkey_dtype_int():
+def test_features_dtype_int():
     assert (df['area'].dtype == int or df['demmand'].dtype == float)
 '''
 # check data type
