@@ -9,7 +9,7 @@ class ProjectZero:
     def get_data(self):
 
         root_path = os.path.dirname(__file__)
-        csv_path = os.path.abspath(os.path.join(root_path, '..', 'data', 'csv'))
+        csv_path = os.path.abspath(os.path.join(root_path, '..', 'data', 'raw', 'csv'))
 
         file_names = [file for file in os.listdir(csv_path) if file.endswith('.csv')]
 
