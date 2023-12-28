@@ -14,7 +14,6 @@ class ProjectZero:
         file_names = [file for file in os.listdir(csv_path) if file.endswith('.csv')]
 
         key_names = []
-
         for file in file_names:
             file = file.replace('.csv','')
             file = file.replace('data_','')
