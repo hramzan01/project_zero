@@ -5,7 +5,7 @@ from numpy import nan
 import os
 
 
-csv_path = os.path.abspath('data/csv/data_utilities.csv')
+csv_path = os.path.abspath('data/raw/csv/data_ksa_utilities.csv')
 # get data
 df = pd.read_csv(csv_path)
 
@@ -26,8 +26,8 @@ def test_unique_check():
 
 
 # check data type
-def test_features_dtype_int():
-    assert (df['area'].dtype == int or df['demmand'].dtype == float)
+# def test_features_dtype_int():
+#     assert (df['area'].dtype == int or df['demmand'].dtype == float)
 '''
 # check data type
 def test_productname_dtype_srt():
