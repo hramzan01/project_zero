@@ -45,7 +45,7 @@ jupyter notebook notebooks/
 
 ## Contact
 
-For questions or feedback, please contact Your Name.
+For questions or feedback, please contact Haaris Ramzan.
 
 ## Acknowledgments
 
