@@ -21,7 +21,7 @@ class ProjectZero:
 
         data = {}
 
-        for (key, df) in zip(key_names, [pd.read_csv(os.path.join(csv_path, file)) for file in file_names]):
+        for (key, df) in zip(key_names, [pd.read_csv(os.path.join(csv_path, file), low_memory=False) for file in file_names]):
             data[key] = df
 
         return data
