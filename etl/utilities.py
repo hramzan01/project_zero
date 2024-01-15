@@ -43,7 +43,10 @@ class Utilities:
         # missing data
         df_renamed.dropna(subset=['electricity_demmand'], inplace=True)
 
-        # dropping outliers with booelan filtering
+        '''dropping outliers with booelan filtering'''
+
+        # filtering out electricity demmand greater than 0
+        df_renamed = df_renamed[df_renamed.electricity_demmand >= 0]
 
         #dropping huge outliers
         df_renamed = df_renamed[~((df_renamed['electricity_demmand'] > 50000000) | (df_renamed['building_gfa'] > 3000000))]
