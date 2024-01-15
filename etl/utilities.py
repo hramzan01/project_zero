@@ -37,6 +37,25 @@ class Utilities:
             'Electricity Use - Grid Purchase (kWh)': 'electricity_demmand'
         })
 
+        # Regressing GFA to Electricty consumption by filtered property type
+        keep_types = [
+            'Office',
+            'K-12 School',
+            'Hotel',
+            'Multifamily Housing',
+            'Hospital (General Medical & Surgical)',
+            'Museum',
+            'Retail Store',
+            'College/University',
+            'Laboratory',
+            'Other - Mall',
+            'Performing Arts',
+            'Prison/Incarceration',
+            'Courthouse'
+       ]
+
+        df_renamed = df_renamed[df_renamed.building_typology.isin(keep_types)]
+        
         # drop duplicates
         df_renamed.drop_duplicates(inplace=True)
         
