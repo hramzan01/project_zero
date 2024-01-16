@@ -56,11 +56,15 @@ class Utilities:
 
         df_renamed = df_renamed[df_renamed.building_typology.isin(keep_types)]
         
+        # convert Occupancy to a float percentage
+        df_renamed.occupancy = df_renamed.occupancy * 0.01
+
         # drop duplicates
         df_renamed.drop_duplicates(inplace=True)
         
         # missing data
         df_renamed.dropna(subset=['electricity_demmand'], inplace=True)
+
 
         '''dropping outliers with booelan filtering'''
 
