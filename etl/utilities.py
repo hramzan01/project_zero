@@ -11,6 +11,15 @@ class Utilities:
         # Assign an attribute ".data" to all new instances of Utilities
         self.data = ProjectZero().get_data()
 
+    def preprocess_design_data(self):
+        # df_model instance
+        df_model = self.data['hz_model'].copy()
+        
+        return df_model
+    
+        # drop unneeded columns
+        df_model.drop(columns=[''])
+                    
     def get_training_data(self):
         # df_model instance
         df = self.data['ext_nyc'].copy()
@@ -19,6 +28,9 @@ class Utilities:
         features = [
             'Primary Property Type - Self Selected',
             'Self-Reported Gross Floor Area (ft²)',
+            'Largest Property Use Type - Gross Floor Area (ft²)',
+            '2nd Largest Property Use Type',
+            '2nd Largest Property Use - Gross Floor Area (ft²)',
             'Year Built',
             'Occupancy',
             'Number of Buildings',
@@ -26,6 +38,10 @@ class Utilities:
         ]
 
         df = df[features]
+        
+        # fill NaN for 2nd property type/gfa with primary
+        df['2nd Largest Property Use Type'] = df['2nd Largest Property Use Type'].fillna(df['Primary Property Type - Self Selected'])
+        df['2nd Largest Property Use - Gross Floor Area (ft²)'] = df['2nd Largest Property Use - Gross Floor Area (ft²)'].fillna(df['Largest Property Use Type - Gross Floor Area (ft²)']) 
 
         # rename nyc columns to match seattle
         df_renamed = df.rename(columns={
@@ -34,8 +50,11 @@ class Utilities:
             'Year Built': 'year_built',
             'Occupancy': 'occupancy',
             'Number of Buildings': 'num_buildings',
-            'Electricity Use - Grid Purchase (kWh)': 'electricity_demmand'
-        })
+            'Electricity Use - Grid Purchase (kWh)': 'electricity_demmand',
+            'Largest Property Use Type - Gross Floor Area (ft²)': 'primary_gfa',
+            '2nd Largest Property Use Type': 'secondary_typology',
+            '2nd Largest Property Use - Gross Floor Area (ft²)': 'secondary_gfa'
+            })
 
         # Regressing GFA to Electricty consumption by filtered property type
         keep_types = [
@@ -61,6 +80,8 @@ class Utilities:
         
         # missing data
         df_renamed.dropna(subset=['electricity_demmand'], inplace=True)
+
+
 
 
         '''dropping outliers with booelan filtering'''
@@ -115,5 +136,30 @@ class Utilities:
         # number of buildings
         df_renamed = df_renamed[df_renamed.num_buildings < 20]
 
+        '''renaming columns'''
+
+        typology_remap = {
+        # primary unique typologies
+        'Office': 'office',
+        'K-12 School': 'school',
+        'Hotel': 'hotel',
+        'Multifamily Housing': 'residential',
+        'Hospital (General Medical & Surgical)': 'hospital',
+        'Museum': 'museum',
+        'Retail Store': 'retail',
+        'College/University': 'university',
+        'Laboratory': 'laboratory',
+        'Other - Mall': 'mall',
+        'Performing Arts': 'performing_arts',
+        'Prison/Incarceration': 'prison',
+        'Courthouse': 'courthouse'
+        }
+
+        df_renamed['building_typology'] = df_renamed['building_typology'].replace(typology_remap)
+        df_renamed['secondary_typology'] = df_renamed['secondary_typology'].replace(typology_remap)
+        
+        # change secondary typology names to lower case and replace space with underscore
+        df_renamed['secondary_typology'] = df_renamed['secondary_typology'].str.lower().str.replace(' ','_')
+
         return df_renamed
-                
+    
