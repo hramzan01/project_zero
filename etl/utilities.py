@@ -94,7 +94,7 @@ class Utilities:
             'building_typology': agg_result['Primary_Asset'].str.lower(),
             'building_gfa': agg_result['Area'],
             'primary_gfa': agg_result['Primary_Asset_Area'],
-            'secondary_typology': agg_result['Second_Asset'],
+            'secondary_typology': agg_result['Second_Asset'].str.lower(),
             'secondary_gfa': agg_result['Second_Asset_Area'],
             'year_built': agg_result['year_built'],
             'occupancy': agg_result['occupancy'],
@@ -253,12 +253,15 @@ class Utilities:
     ''''''
 
     def return_energy_demmand(self):
-
+        import dill
+        
         self.data = Utilities().preprocess_design_data()
         preproc_design_data = self.data.copy()
 
-        pipe = pickle.load(open('pipeline/pipeline.pkl', 'rb'))
-            
+        # Load the pipeline using dill
+        with open('pipeline/pipeline.pkl', 'rb') as file:
+            pipe = dill.load(file)
+
         preproc_design_data.reset_index(drop=True, inplace=True)
         preproc_design_data['electricity_demmand'] = pipe.predict(preproc_design_data).astype(int)
 
