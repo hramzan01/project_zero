@@ -26,6 +26,8 @@ class Utilities:
 
         # Consider important features that can get from design model
         features = [
+            'Property Id',
+            'Postal Code',
             'Primary Property Type - Self Selected',
             'Self-Reported Gross Floor Area (ft²)',
             'Largest Property Use Type - Gross Floor Area (ft²)',
@@ -35,6 +37,7 @@ class Utilities:
             'Occupancy',
             'Number of Buildings',
             'Electricity Use - Grid Purchase (kWh)'
+
         ]
 
         df = df[features]
@@ -45,6 +48,8 @@ class Utilities:
 
         # rename nyc columns to match seattle
         df_renamed = df.rename(columns={
+            'Property Id': 'building_id',
+            'Postal Code': 'plot_id',
             'Primary Property Type - Self Selected': 'building_typology' ,
             'Self-Reported Gross Floor Area (ft²)': 'building_gfa',
             'Year Built': 'year_built',
@@ -141,16 +146,16 @@ class Utilities:
         typology_remap = {
         # primary unique typologies
         'Office': 'office',
-        'K-12 School': 'school',
+        'K-12 School': 'education',
         'Hotel': 'hotel',
         'Multifamily Housing': 'residential',
         'Hospital (General Medical & Surgical)': 'hospital',
         'Museum': 'museum',
         'Retail Store': 'retail',
-        'College/University': 'university',
+        'College/University': 'education',
         'Laboratory': 'laboratory',
         'Other - Mall': 'mall',
-        'Performing Arts': 'performing_arts',
+        'Performing Arts': 'community',
         'Prison/Incarceration': 'prison',
         'Courthouse': 'courthouse'
         }
