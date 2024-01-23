@@ -23,7 +23,7 @@ if __name__ == "__main__":
     # define csv path
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     end_path = '00_Project_Zero_2.0.csv'
-    csv_path = os.path.join(root_path, 'python_testing', end_path)
+    csv_path = os.path.join(root_path, 'watchdog', end_path)
 
     # print welcome message
     print('--------------------------')
