@@ -4,7 +4,7 @@ import pandas as pd
 # defining csv location
 root_path = os.path.dirname(os.path.dirname(__file__))
 end_path = '00_Project_Zero_2.0.csv'
-csv_path = os.path.join(root_path, 'python_testing', end_path)
+csv_path = os.path.join(root_path, 'watchdog', end_path)
 
 df = pd.read_csv(csv_path)
 print('----------------------')
