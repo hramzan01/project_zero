@@ -15,7 +15,6 @@ class CustomEventHandler(FileSystemEventHandler):
             return
         elif event.event_type == 'modified' and event.src_path == self.csv_path:
             # Run the script only when the specified CSV file is modified
-            logging.info(f"CSV file modified: {event.src_path}")
             script_path = os.path.join(os.path.dirname(__file__), 'pytest.py')
             subprocess.run(["python", script_path])
 
