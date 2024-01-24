@@ -43,6 +43,16 @@ bash
 Copy code
 jupyter notebook notebooks/
 
+## watchdog file monitor
+
+To compile watchdog file monitor into .exe package please follow the following instructions
+- cd into watchdog folder
+- in comand line run the following code:
+`pyinstaller --hidden-import=sklearn --hidden-import=pandas --hidden-import=numpy --hidden-import=etl.utilities --hidden-import=sklearn.pipeline --hidden-import=sklearn.compose --hidden-import=sklearn.preprocessing --hidden-import=sklearn.impute --hidden-import=sklearn.model_selection --hidden-import=sklearn.feature_extraction --hidden-import=sklearn.feature_selection --hidden-import=sklearn.ensemble --hidden-import=sklearn.linear_model --hidden-import=sklearn.metrics watchdog_monitor.py`
+-copy `/dist` folder and `pipeline.pkl` into desired location 
+- run exe file to initiate the watchdog monitor
+
+
 ## Contact
 
 For questions or feedback, please contact Haaris Ramzan.
