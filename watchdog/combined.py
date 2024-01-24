@@ -21,10 +21,14 @@ class CustomEventHandler(FileSystemEventHandler):
         import os
         import pandas as pd
 
-        # defining csv location
-        root_path = os.path.dirname(os.path.dirname(__file__))
-        end_path = '00_Project_Zero_2.0.csv'
-        csv_path = os.path.join(root_path, 'watchdog', end_path)
+
+        # # define csv path
+        script_directory = os.path.dirname(os.path.abspath(__file__))
+        parent_directory = os.path.abspath(os.path.join(script_directory, '..', '..', '..'))
+        csv_file_name = '00_Project_Zero_2.0.csv'
+
+        # Construct the full path to the CSV file
+        csv_path = os.path.join(parent_directory, csv_file_name)
 
         df = pd.read_csv(csv_path)
         print('----------------------')
@@ -129,8 +133,12 @@ class CustomEventHandler(FileSystemEventHandler):
             
             preproc_design_data = result
 
+            # Construct the full path to the CSV file
+            pickle_file = 'pipeline.pkl'
+            pickle_path = os.path.join(parent_directory, pickle_file)
+
             # Load the pipeline using dill
-            with open('pipeline.pkl', 'rb') as file:
+            with open(pickle_path, 'rb') as file:
                 pipe = dill.load(file)
 
             preproc_design_data.reset_index(drop=True, inplace=True)
@@ -143,15 +151,23 @@ class CustomEventHandler(FileSystemEventHandler):
         print('02 processing data...')
 
         # export as csvclear
-        energy_demmands.to_csv('energy_demmand.csv', index=False)
+
+        # Construct the full path to the CSV file
+        export_file = 'energy_demmand.csv'
+        export_path = os.path.join(parent_directory, export_file)
+
+        energy_demmands.to_csv(export_path, index=False)
         print('03 exported file success ✓')
-        
+
 if __name__ == "__main__":
 
-    # define csv path
-    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    end_path = '00_Project_Zero_2.0.csv'
-    csv_path = os.path.join(root_path, 'watchdog', end_path)
+    # # define csv path
+    script_directory = os.path.dirname(os.path.abspath(__file__))
+    parent_directory = os.path.abspath(os.path.join(script_directory, '..', '..', '..'))
+    csv_file_name = '00_Project_Zero_2.0.csv'
+
+    # Construct the full path to the CSV file
+    csv_path = os.path.join(parent_directory, csv_file_name)
 
     # print welcome message
     print('--------------------------')
@@ -173,7 +189,7 @@ if __name__ == "__main__":
 
     event_handler = CustomEventHandler(csv_path)
     observer = Observer()
-    observer.schedule(event_handler, root_path, recursive=True)
+    observer.schedule(event_handler, parent_directory, recursive=True)
     observer.start()
     try:
         while True:
