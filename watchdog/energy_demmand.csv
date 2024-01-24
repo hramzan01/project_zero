@@ -1,10 +1,10 @@
 building_id,plot_id,building_typology,building_gfa,primary_gfa,secondary_typology,secondary_gfa,year_built,occupancy,num_buildings,electricity_demmand
-Podium 01,1,community place,400,400,,0.0,2024,100,1,469048
+Podium 01,1,palace,400,400,,0.0,2024,100,1,469048
 Podium 02,2,education,400,400,,0.0,2024,100,1,596373
 Podium 03,3,retail,400,400,,0.0,2024,100,1,922055
 Tower 01,1,retail,400,400,,0.0,2024,100,1,922055
 Tower 02,2,retail,400,400,,0.0,2024,100,1,922055
-Tower 03,3,hotel,800,800,softball,800.0,2024,100,1,469048
+Tower 03,3,hotel,800,800,sugar,800.0,2024,100,1,469048
 Tower 07,1,office,400,400,,0.0,2024,100,1,708660
 Tower 08,1,monkey shop ssistnat,400,400,,0.0,2024,100,1,469048
 Tower 12,2,residential,400,400,,0.0,2024,100,1,339711
