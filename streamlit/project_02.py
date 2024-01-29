@@ -17,7 +17,7 @@ st.title('Market: community trading platform for renewable energy')
 
 
 if selected == 'Home':
-    subprocess.run(['streamlit', 'run', 'home.py'])
+    subprocess.run(['streamlit', 'run', 'app.py'])
 
 if selected == 'City Plan':
     subprocess.run(['streamlit', 'run', 'project_01.py'])
