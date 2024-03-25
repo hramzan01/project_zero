@@ -1,0 +1,46 @@
+<mxfile host="app.diagrams.net" modified="2024-02-12T22:47:09.381Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15" etag="Dj9mHW3aQZFpCiy8KKRy" version="23.1.3" type="github">
+  <diagram name="Page-1" id="-9ZtGJTV62_gnof4hKbI">
+    <mxGraphModel dx="984" dy="694" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="j0ZtgBIO7Xg-u-LCRSyD-1" target="j0ZtgBIO7Xg-u-LCRSyD-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-1" value="" style="verticalLabelPosition=bottom;sketch=0;html=1;fillColor=#282828;strokeColor=none;verticalAlign=top;pointerEvents=1;align=center;shape=mxgraph.cisco_safe.people_places_things_icons.icon8;" vertex="1" parent="1">
+          <mxGeometry x="164.25" y="130" width="19.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="j0ZtgBIO7Xg-u-LCRSyD-2" target="j0ZtgBIO7Xg-u-LCRSyD-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-2" value="" style="verticalLabelPosition=bottom;sketch=0;html=1;fillColor=#282828;strokeColor=none;verticalAlign=top;pointerEvents=1;align=center;shape=mxgraph.cisco_safe.people_places_things_icons.icon8;" vertex="1" parent="1">
+          <mxGeometry x="326.55" y="130" width="19.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="j0ZtgBIO7Xg-u-LCRSyD-3" target="j0ZtgBIO7Xg-u-LCRSyD-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-3" value="" style="verticalLabelPosition=bottom;sketch=0;html=1;fillColor=#282828;strokeColor=none;verticalAlign=top;pointerEvents=1;align=center;shape=mxgraph.cisco_safe.people_places_things_icons.icon8;" vertex="1" parent="1">
+          <mxGeometry x="482.8" y="130" width="19.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-9" value="Building Typology&lt;br&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="113.99999999999999" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-10" value="Embodied Carbon" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="276.3" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-12" value="Utiities Demmand" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="432.55" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-13" value="Population" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="592.55" y="230" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="j0ZtgBIO7Xg-u-LCRSyD-14" target="j0ZtgBIO7Xg-u-LCRSyD-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="j0ZtgBIO7Xg-u-LCRSyD-14" value="" style="verticalLabelPosition=bottom;sketch=0;html=1;fillColor=#282828;strokeColor=none;verticalAlign=top;pointerEvents=1;align=center;shape=mxgraph.cisco_safe.people_places_things_icons.icon8;" vertex="1" parent="1">
+          <mxGeometry x="642.8" y="130" width="19.5" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
