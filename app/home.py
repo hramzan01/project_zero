@@ -15,7 +15,7 @@ from PIL import Image
 import os
 
 
-st.set_page_config(page_title="Project Zero", initial_sidebar_state="expanded", layout='wide')
+st.set_page_config(page_title="Project Zero")
 
 
 # Background
@@ -56,8 +56,35 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Open the image
-image = Image.open('app/assets/logo.png')
+with st.container():
 
-st.sidebar.image(image, width=100 ,use_column_width=True)
-st.video('app/assets/pz_vid.mp4')
+    # HOME: PZero logo
+    # col1, col2, col3 = st.columns([1, 2, 1])
+
+    # Load in images
+    logo = Image.open('app/assets/logo.png')
+    what = Image.open('app/assets/pz_what.png')
+    
+    st.image(logo, use_column_width=True)
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+
+
+    st.markdown('')
+    st.write("""Project Zero is a data analytics tool which is used to help track change in key city metrics""")
+
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+    
+    st.image(what, use_column_width=True)
+
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+    st.markdown('')  # Empty markdown line for spacing
+
+    
+    st.video('app/assets/pz_vid.mp4')
