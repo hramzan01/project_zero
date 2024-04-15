@@ -107,12 +107,6 @@ pip install project_zero
 code blocks for commands
 ```
 
-## Help
-Any advise for common problems or issues.
-```bash
-command to run if program contains helper info
-```
-
 ## Authors
 Haaris Ramzan
 Riccardo Pellizon
