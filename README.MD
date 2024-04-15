@@ -36,16 +36,6 @@ An in-depth paragraph about your project and overview of use.
 |   |   utilities.py
 |   |   utils.py
 |   |   __init__.py
-|   |
-|   \---__pycache__
-|           extract.cpython-310.pyc
-|           extract.cpython-311.pyc
-|           pipeline.cpython-311.pyc
-|           population.cpython-311.pyc
-|           typologies.cpython-311.pyc
-|           utilities.cpython-311.pyc
-|           utils.cpython-311.pyc
-|           __init__.cpython-311.pyc
 |
 +---notebooks
 |       nb_carbon.ipynb
@@ -72,10 +62,6 @@ An in-depth paragraph about your project and overview of use.
 +---tests
 |   |   test_pipeline.py
 |   |   __init__.py
-|   |
-|   \---__pycache__
-|           test_product_pipeline.cpython-310-pytest-7.1.3.pyc
-|           __init__.cpython-310.pyc
 |
 \---watchdog
         data_coefficients.csv
@@ -112,7 +98,7 @@ Haaris Ramzan
 Riccardo Pellizon
 
 ## License
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under Proprietary License - see the LICENSE.md file for details
 
 ## Acknowledgments
 * The Project Technology Team and Leadership at RSHP who helped support and facilitate this development
