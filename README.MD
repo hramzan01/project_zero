@@ -99,8 +99,8 @@ pip install project_zero
 To start using Project Zero, simply download the latest version from the repository and follow the installation instructions in the documentation.
 
 ## Authors
-Haaris Ramzan
-Riccardo Pellizon
+- Haaris Ramzan (Back End, Data Engineering)
+- Riccardo Pellizon (Front End, Interface)
 
 ## License
 This project is licensed under Proprietary License - see the LICENSE.md file for details
