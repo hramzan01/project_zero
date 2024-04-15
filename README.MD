@@ -3,6 +3,8 @@
 ## Description
 Project Zero is a cutting-edge data analytics tool designed to streamline and enhance the management of evolving city projects. By centralizing and facilitating dynamic data tracking, Project Zero empowers project stakeholders to adapt and optimize their designs effectively.
 
+![alt text](https://github.com/hramzan01/project_zero/blob/master/app/assets/pz_what.png?raw=true)
+
 ### Key Features:
 - **Centralized Data Management**: Project Zero provides a centralized platform to consolidate various types of data related to city projects, including early concept data such as areas and building types.
 
