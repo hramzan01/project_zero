@@ -1,4 +1,4 @@
-# Project Zero: Smart City Development
+# Project Zero: Smart City Development 
 
 ## Description
 Project Zero is a cutting-edge data analytics tool designed to streamline and enhance the management of evolving city projects. By centralizing and facilitating dynamic data tracking, Project Zero empowers project stakeholders to adapt and optimize their designs effectively.
@@ -85,6 +85,9 @@ Project Zero is a cutting-edge data analytics tool designed to streamline and en
 
 ## Getting Started
 
+### Executing program
+To start using Project Zero, simply download the latest version from the repository and follow the installation instructions in the documentation.
+
 ### Dependencies
 ```bash
 pip install -r requirements.txt
@@ -95,12 +98,9 @@ pip install -r requirements.txt
 pip install project_zero
 ```
 
-### Executing program
-To start using Project Zero, simply download the latest version from the repository and follow the installation instructions in the documentation.
-
 ## Authors
-- Haaris Ramzan (Back End, Data Engineering)
-- Riccardo Pellizon (Front End, Interface)
+- Haaris Ramzan, RSHP (Back End, Data Engineering)
+- Riccardo Pellizon, RSHP (Front End, Interface)
 
 ## License
 This project is licensed under Proprietary License - see the LICENSE.md file for details
