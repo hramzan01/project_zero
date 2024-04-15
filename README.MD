@@ -4,13 +4,13 @@
 Project Zero is a cutting-edge data analytics tool designed to streamline and enhance the management of evolving city projects. By centralizing and facilitating dynamic data tracking, Project Zero empowers project stakeholders to adapt and optimize their designs effectively.
 
 ### Key Features:
-- Centralized Data Management: Project Zero provides a centralized platform to consolidate various types of data related to city projects, including early concept data such as areas and building types.
+- **Centralized Data Management**: Project Zero provides a centralized platform to consolidate various types of data related to city projects, including early concept data such as areas and building types.
 
-*Dynamic Tracking: With Project Zero, users can seamlessly track changes in project design over time, ensuring that the most up-to-date information is always available.
+- **Dynamic Tracking**: With Project Zero, users can seamlessly track changes in project design over time, ensuring that the most up-to-date information is always available.
 
-*Specialist Data Integration: The tool integrates specialist data to enhance analysis and decision-making processes. This includes data related to expected energy demand, predicted population trends, and embodied carbon.
+- **Specialist Data Integration**: The tool integrates specialist data to enhance analysis and decision-making processes. This includes data related to expected energy demand, predicted population trends, and embodied carbon.
 
-*Comprehensive Outputs: Project Zero generates comprehensive outputs based on the integrated data, offering insights into various aspects of the project, such as expected energy demand, predicted population growth, and embodied carbon emissions.
+- **Comprehensive Outputs**: Project Zero generates comprehensive outputs based on the integrated data, offering insights into various aspects of the project, such as expected energy demand, predicted population growth, and embodied carbon emissions.
 
 
 ## Project Directory
@@ -96,12 +96,7 @@ pip install project_zero
 ```
 
 ### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```bash
-code blocks for commands
-```
+To start using Project Zero, simply download the latest version from the repository and follow the installation instructions in the documentation.
 
 ## Authors
 Haaris Ramzan
