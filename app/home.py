@@ -90,7 +90,11 @@ with st.container():
     st.video('app/assets/pz_vid.mp4')
 
     # Architecture
+    st.title('Project Architecture')
     st.image('app/assets/pz_arch.png')
+
+    st.title('Project Features')
+    st.write('Project Zero generates comprehensive outputs based on the integrated data, offering insights into various aspects of the project, such as expected energy demand, predicted population growth, and embodied carbon emissions.')
 
     # Utilities
     st.image('app/assets/pz_utilities.png')
