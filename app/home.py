@@ -74,7 +74,7 @@ with st.container():
 
 
     st.markdown('')
-    st.write("""Project Zero is a data analytics tool which is used to help track change in key city metrics""")
+    st.write("""Project Zero&#8482; is a cutting-edge data analytics tool designed to streamline and enhance the management of evolving city projects. By centralizing and facilitating dynamic data tracking, Project Zero&#8482; empowers project stakeholders to adapt and optimize their designs effectively.""")
 
     st.markdown('')  # Empty markdown line for spacing
     st.markdown('')  # Empty markdown line for spacing
@@ -88,3 +88,15 @@ with st.container():
 
     
     st.video('app/assets/pz_vid.mp4')
+
+    # Architecture
+    st.image('app/assets/pz_arch.png')
+
+    # Utilities
+    st.image('app/assets/pz_utilities.png')
+    
+    # Carbon
+    st.image('app/assets/pz_carbon.png')
+
+    # Population
+    st.image('app/assets/pz_population.png')
