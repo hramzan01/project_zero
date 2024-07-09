@@ -102,7 +102,7 @@ pip install project_zero
 
 ## Authors
 - Haaris Ramzan, RSHP (Back End, Data Engineering)
-- Riccardo Pellizon, RSHP (Front End, Interface)
+- Riccardo Pellizon, RSHP (Front End, UX Interface)
 
 ## License
 This project is licensed under Proprietary License - see the LICENSE.md file for details
