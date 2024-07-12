@@ -1,19 +1,7 @@
 import streamlit as st
 from streamlit.components.v1 import html
-import pandas as pd
 import streamlit as st
-# import plotly.graph_objects as go
-from datetime import datetime
-
-
-import matplotlib.pylab as plt
-
-# import datetime
-import requests
-
 from PIL import Image
-import os
-
 
 st.set_page_config(page_title="Project Zero")
 
@@ -62,8 +50,8 @@ with st.container():
     # col1, col2, col3 = st.columns([1, 2, 1])
 
     # Load in images
-    logo = Image.open('app/assets/logo.png')
-    what = Image.open('app/assets/pz_what.png')
+    logo = Image.open('assets/logo.png')
+    what = Image.open('assets/pz_what.png')
     
     st.image(logo, use_column_width=True)
     st.markdown('')  # Empty markdown line for spacing
@@ -87,20 +75,20 @@ with st.container():
     st.markdown('')  # Empty markdown line for spacing
 
     
-    st.video('app/assets/pz_vid.mp4')
+    st.video('assets/pz_vid.mp4')
 
     # Architecture
     st.title('Project Architecture')
-    st.image('app/assets/pz_arch.png')
+    st.image('assets/pz_arch.png')
 
     st.title('Project Features')
     st.write('Project Zero generates comprehensive outputs based on the integrated data, offering insights into various aspects of the project, such as expected energy demand, predicted population growth, and embodied carbon emissions.')
 
     # Utilities
-    st.image('app/assets/pz_utilities.png')
+    st.image('assets/pz_utilities.png')
     
     # Carbon
-    st.image('app/assets/pz_carbon.png')
+    st.image('assets/pz_carbon.png')
 
     # Population
-    st.image('app/assets/pz_population.png')
+    st.image('assets/pz_population.png')
