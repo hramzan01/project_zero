@@ -1,70 +1,55 @@
-import streamlit as st
-from specklepy.api.client import SpeckleClient
-from specklepy.api.credentials import get_account_from_token
+import os
 import pandas as pd
+import streamlit as st
 import plotly.express as px
 from dotenv import load_dotenv
-import os
 load_dotenv() 
+
+from specklepy.api.client import SpeckleClient
+from specklepy.api.credentials import get_account_from_token
 
 
 API_KEY = os.getenv('SPECKLE_API')
+SERVER = 'speckle.xyz'
+STREAM = 'BLEND2MEND'
 
-
-#PAGE CONFIG
-st.set_page_config(
-    page_title="Speckle Stream Activity",
-    page_icon="📊"
-)
-
-
-'''WEB VIEWER'''
-
-# import logo
-st.image('speckle/logo.png', width=200)
 
 #HEADER
+st.image('speckle/logo.png', width=150)
 st.title("PROJECT ZERO: Analytics ")
 
 
-#-------
-#User Input boxes
-speckleServer = 'speckle.xyz'
-speckleToken = API_KEY
-#-------
-
-#-------
-#CLIENT
-client = SpeckleClient(host=speckleServer)
-account = get_account_from_token(speckleToken, speckleServer)
+# 01 CLIENT
+client = SpeckleClient(host=SERVER)
+account = get_account_from_token(API_KEY, SERVER)
 client.authenticate_with_account(account)
-#-------
 
-#-------
-#Streams List👇
-streams = client.stream.list()
-streamNames = [s.name for s in streams]
-sName = st.selectbox(label="Select your stream", options=streamNames, help="Select your stream from the dropdown")
-stream = client.stream.search(sName)[0]
+# 02 STREAM
+stream = client.stream.search(STREAM)[0]
 
 
-#Stream Branches 🌴
+# 03 BRANCH
 branches = client.branch.list(stream.id)
-#Stream Commits 🏹
 commits = client.commit.list(stream.id, limit=100)
-#-------
     
-    #--------------------------
-# Create a definition that generates an iframe from commit id
+    
+# 04 VIEWER👁‍🗨
 def commit2viewer(stream, commit, height=400) -> str:
     embed_src = f"https://speckle.xyz/embed?stream={stream.id}&commit={commit.id}"
     return st.components.v1.iframe(src=embed_src, height=height)
-#--------------------------
 
-#--------------------------
-#VIEWER👁‍🗨
+
 commit2viewer(stream, commits[0])
-#--------------------------
+
+
+
+
+
+
+
+
+
+
 
 
 
