@@ -8,36 +8,30 @@ load_dotenv()
 from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_account_from_token
 
-
 API_KEY = os.getenv('SPECKLE_API')
 SERVER = 'speckle.xyz'
 STREAM = 'BLEND2MEND'
 
-
-#HEADER
+# 01 HEADER
 st.image('speckle/logo.png', width=150)
 st.title("PROJECT ZERO: Analytics ")
 
-
-# 01 CLIENT
+# 02 CLIENT
 client = SpeckleClient(host=SERVER)
 account = get_account_from_token(API_KEY, SERVER)
 client.authenticate_with_account(account)
 
-# 02 STREAM
+# 03 STREAM
 stream = client.stream.search(STREAM)[0]
 
-
-# 03 BRANCH
+# 04 BRANCH
 branches = client.branch.list(stream.id)
 commits = client.commit.list(stream.id, limit=100)
     
-    
-# 04 VIEWER👁‍🗨
+# 05 VIEWER👁‍🗨
 def commit2viewer(stream, commit, height=400) -> str:
     embed_src = f"https://speckle.xyz/embed?stream={stream.id}&commit={commit.id}"
     return st.components.v1.iframe(src=embed_src, height=height)
-
 
 commit2viewer(stream, commits[0])
 
