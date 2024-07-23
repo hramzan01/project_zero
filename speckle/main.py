@@ -3,12 +3,13 @@ from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_account_from_token
 import pandas as pd
 import plotly.express as px
+from dotenv import load_dotenv
 import os
+load_dotenv() 
 
-# API_KEY = os.environ["SPECKLE_API"]
-API_KEY = '5f8abe8b8edaed4f5238e5647861058e4d1af4fbb7'
 
-# print(os.environ["SPECKLE_API"])
+API_KEY = os.getenv('SPECKLE_API')
+
 
 #PAGE CONFIG
 st.set_page_config(
