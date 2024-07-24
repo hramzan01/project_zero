@@ -21,8 +21,14 @@ SERVER = 'speckle.xyz'
 STREAM = 'PZ_Beta'
 
 # 01 HEADER
-st.image('speckle/logo.png', width=150)
-st.title("PROJECT ZERO: Analytics ")
+hl, space, hr = st.columns((1, 5, 1,))
+with hr:
+    st.image('speckle/pz_logo.png', width=200)
+
+with hl:
+    st.image('speckle/logo.png', width=250)
+
+st.title("PROJECT ZERO: Project Analytics")
 
 # 02 CLIENT
 client = SpeckleClient(host=SERVER)
