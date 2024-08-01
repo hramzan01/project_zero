@@ -16,8 +16,7 @@ st.set_page_config(layout="wide")
 
 API_KEY = os.getenv('SPECKLE_API')
 SERVER = 'speckle.xyz'
-STREAM = 'PZ_Beta'
-USER_STRING = 'Building'
+STREAM = 'BLEND2MEND'
 
 # 01 HEADER
 hl, space, hr = st.columns((1, 5, 1,))
@@ -42,33 +41,18 @@ stream = client.stream.search(STREAM)[0]
 branches = client.branch.list(stream.id)
 commits = client.commit.list(stream.id, limit=100)
     
+# 05 VIEWER👁‍🗨
+def commit2viewer(stream, commit, height=800) -> str:
+    embed_src = f"https://{SERVER}/embed?stream={stream.id}&commit={commit.id}"
+    return st.components.v1.iframe(src=embed_src, height=height)
+
+commit2viewer(stream, commits[0])
 
 # 06 GET OBJECTS
 latest_commit = commits[0]
 object_id = latest_commit.referencedObject
 transport = ServerTransport(client=client, stream_id=stream.id)
 speckle_object = operations.receive(object_id, transport)
-
-# 08 USER STRINGS (FILTERING)
-string_list = []
-for element in speckle_object.elements:
-    for subelement in element.elements:
-        # find all available user strings
-        user_strings = subelement.userStrings.get_member_names()
-        for string in user_strings:
-            string_list.append(string)
-
-string_list = list(set(string_list))
-USER_STRING = st.selectbox('Select User String', string_list)
-
-# 05 VIEWER👁‍🗨
-def commit2viewer(stream, commit, height=800) -> str:
-    embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true&filter=%7B%22propertyInfoKey%22%3A%22userStrings.{USER_STRING}%22%7D'
-    return st.components.v1.iframe(src=embed_src, height=height)
-
-commit2viewer(stream, commits[0])
-
-#make a drop down menu
 
 # 07 ACCESS DATA
 typologies = []
