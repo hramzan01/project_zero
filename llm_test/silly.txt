@@ -1,1 +1,4 @@
-hey my name is haaris and my colleague is ricccardo we have developed some really innovative digital tools for the practice rshp and they help architects and designers design buildings and cities more efficiently
+Project Zero: Intelligent Data Analytics
+Project Zero is our proprietary suite of smart tools developed by RSHP. These tools are designed to monitor critical project metrics, optimize design outputs, and enhance overall program efficiency.
+Additive Intelligence forms the backbone of this application, aggregating design data with specialized datasets. This allows for early-stage estimation of essential project quantities, including areas, parking, population, embodied carbon, and energy.
+In collaboration with ARUP, we are advancing our technology through joint development. This partnership is set to amplify our digital capabilities, resulting in a more robust and powerful project technology platform.
