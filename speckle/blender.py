@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 from dotenv import load_dotenv
-load_dotenv() 
+load_dotenv()
 
 from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_account_from_token
@@ -16,7 +16,7 @@ st.set_page_config(layout="wide")
 
 API_KEY = os.getenv('SPECKLE_API')
 SERVER = 'speckle.xyz'
-STREAM = 'BLEND2MEND'
+STREAM = 'revit2spevit'
 
 # 01 HEADER
 hl, space, hr = st.columns((1, 5, 1,))
@@ -40,7 +40,7 @@ stream = client.stream.search(STREAM)[0]
 # 04 BRANCH
 branches = client.branch.list(stream.id)
 commits = client.commit.list(stream.id, limit=100)
-    
+
 # 05 VIEWER👁‍🗨
 def commit2viewer(stream, commit, height=800) -> str:
     embed_src = f"https://{SERVER}/embed?stream={stream.id}&commit={commit.id}"
@@ -105,10 +105,10 @@ st.dataframe(df,use_container_width=True)
 # Display Charts
 
 with chart1:
-    # bar chart of areas by typology 
+    # bar chart of areas by typology
     fig = px.bar(df, x="Typology", y="Area (m2)", title="Building Areas by Typology")
     st.plotly_chart(fig, use_container_width=True)
-    
+
 with chart2:
     # pie chart of areas by building ID
     fig = px.pie(df, names="Typology", values="Area (m2)", title="Areas by Typology")
