@@ -1,5 +1,7 @@
 # text_retrieval.py
 import os
+from dotenv import load_dotenv
+load_dotenv()
 from langchain.chains import RetrievalQA
 from langchain_community.document_loaders import TextLoader
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
