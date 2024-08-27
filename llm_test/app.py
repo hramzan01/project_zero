@@ -1,4 +1,5 @@
 import streamlit as st
+import time
 from text_retrieval import process_text_file, query_model
 
 # Specify the path to the text file
@@ -21,6 +22,15 @@ st.title("PROJECT ZERO: Project Analytics")
 
 
 # ////////////////////////////////////////////////////////////////
+def type_writer(text, speed=0.02):
+    placeholder = st.empty()
+    typed_text = ""
+    for char in text:
+        typed_text += char
+        placeholder.markdown(typed_text)
+        time.sleep(speed)
+    return typed_text
+
 def main():
     st.title("Text File Chatbot")
 
@@ -48,10 +58,12 @@ def main():
             # Query the model and get the result
             result = query_model(docsearch, user_query)
 
-            # Display assistant response in chat message container
-            st.chat_message("assistant").markdown(result)
+            # Simulate typing for assistant response
+            with st.chat_message("assistant"):
+                typed_response = type_writer(result)
+
             # Add assistant response to chat history
-            st.session_state.messages.append({"role": "assistant", "content": result})
+            st.session_state.messages.append({"role": "assistant", "content": typed_response})
 
 if __name__ == "__main__":
     main()
