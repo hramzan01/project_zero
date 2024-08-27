@@ -4,10 +4,10 @@ from text_retrieval import process_text_file, query_model
 # Specify the path to the text file
 TEXT_FILE_PATH = "llm_test/data/silly.txt"
 
-# Set Streamlit to force wide mode
+
+# 01 HEADER AND VISUAL LAYOUT
 st.set_page_config(layout="wide")
 
-# 01 HEADER
 hl, space, hr = st.columns((1, 5, 1))
 with hr:
     st.image('speckle/pz_logo.png', width=200)
@@ -17,6 +17,10 @@ with hl:
 
 st.title("PROJECT ZERO: Project Analytics")
 
+
+
+
+# ////////////////////////////////////////////////////////////////
 def main():
     st.title("Text File Chatbot")
 
