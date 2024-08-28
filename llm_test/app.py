@@ -56,7 +56,14 @@ def main():
     txt_path = None  # Initialize txt_path to avoid reference error
 
     if uploaded_file is not None:
-        # Create a temporary directory to store the uploaded PDF
+
+        # if temp folder exists, delete it
+        if os.path.exists("temp_files"):
+            for file in os.listdir("temp_files"):
+                os.remove(os.path.join("temp_files", file))
+            os.rmdir("temp_files")
+
+        # Create a temporary directory to store the uploaded PDF delete it after use
         temp_dir = "temp_files"
         if not os.path.exists(temp_dir):
             os.makedirs(temp_dir)
