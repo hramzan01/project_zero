@@ -13,3 +13,4 @@ __pycache__
 /data
 .python-version
 llm_test/data
+llm_test/temp_files
