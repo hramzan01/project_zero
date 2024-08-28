@@ -15,7 +15,7 @@ def process_text_file(file_path):
     except FileNotFoundError:
         return None, "File not found."
 
-    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    text_splitter = CharacterTextSplitter(chunk_size=2000, chunk_overlap=200)
     texts = text_splitter.split_documents(documents)
 
     openai_api_key = os.getenv('OPENAI_API_KEY')

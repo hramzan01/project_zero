@@ -1,4 +1,5 @@
 import fitz  # PyMuPDF
+import os
 
 def extract_text_from_pdf(pdf_path, txt_path):
     # Open the PDF file
@@ -17,11 +18,6 @@ def extract_text_from_pdf(pdf_path, txt_path):
 
     # Close the PDF document
     pdf_document.close()
-    print('document exported!')
+    print('Document exported!')
 
-# Paths to the PDF and the output text file
-pdf_path = 'llm_test/data/kidrock.pdf'
-txt_path = 'llm_test/data/kidrock.txt'
-
-# Extract text from the PDF and save it to a text file
-extract_text_from_pdf(pdf_path, txt_path)
+    return txt_path
