@@ -1,5 +1,8 @@
 import streamlit as st
 import os
+from PIL import Image
+import fitz
+import io
 import time
 from text_retrieval import process_text_file, query_model
 from pdf_extractor import extract_text_from_pdf
@@ -34,6 +37,21 @@ def type_writer(text, speed=0.02):
 def main():
     st.subheader("Project Zero AI Assistant")
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
+
+    if uploaded_file is not None:
+        # Load the PDF
+        pdf_document = fitz.open(stream=uploaded_file.read(), filetype="pdf")
+
+        # Extract the first page
+        first_page = pdf_document.load_page(0)
+
+        # Convert the page to an image
+        pix = first_page.get_pixmap()
+        image = Image.open(io.BytesIO(pix.tobytes()))
+
+        # Display the image
+        st.image(image, caption='First page of uploaded PDF', use_column_width=True)
+
 
     txt_path = None  # Initialize txt_path to avoid reference error
 
