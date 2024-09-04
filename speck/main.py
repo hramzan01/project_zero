@@ -1,17 +1,13 @@
-import os
-import pandas as pd
 import streamlit as st
-import plotly.express as px
 from dotenv import load_dotenv
 load_dotenv()
 
 from specklepy.api.client import SpeckleClient
 from specklepy.api.credentials import get_account_from_token
 from specklepy.transports.server import ServerTransport
-from specklepy.objects.base import Base
 from specklepy.core.api import operations
 
-def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):# set streamlit to force wide mode (only allowed to be called once in a script, careful when importing as a module)
+def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):
 
     # 01 CLIENT
     client = SpeckleClient(host=SERVER)
@@ -41,7 +37,7 @@ def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):# set streamlit to force w
     commit2viewer(stream, commits[0])
 
 
-'''Example Use Case Below'''
+'''EXAMPLE USE CASE'''
 # API_KEY = os.getenv('SPECKLE_API')
 # SERVER = 'speckle.xyz'
 # STREAM = 'PZ_Beta'
