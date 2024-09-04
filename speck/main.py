@@ -11,12 +11,7 @@ from specklepy.transports.server import ServerTransport
 from specklepy.objects.base import Base
 from specklepy.core.api import operations
 
-def speck_viewer():# set streamlit to force wide mode (only allowed to be called once in a script, careful when importing as a module)
-
-    API_KEY = os.getenv('SPECKLE_API')
-    SERVER = 'speckle.xyz'
-    STREAM = 'PZ_Beta'
-    USER_STRING = 'Building'
+def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):# set streamlit to force wide mode (only allowed to be called once in a script, careful when importing as a module)
 
     # 01 CLIENT
     client = SpeckleClient(host=SERVER)
