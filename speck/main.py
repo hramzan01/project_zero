@@ -39,3 +39,12 @@ def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):# set streamlit to force w
         return st.components.v1.iframe(src=embed_src, height=height)
 
     commit2viewer(stream, commits[0])
+
+
+'''Example Use Case Below'''
+# API_KEY = os.getenv('SPECKLE_API')
+# SERVER = 'speckle.xyz'
+# STREAM = 'PZ_Beta'
+# USER_STRING = 'Building'
+
+# speck_viewer(API_KEY,SERVER, STREAM, USER_STRING)
