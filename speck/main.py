@@ -22,7 +22,6 @@ def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):
     branches = client.branch.list(stream.id)
     commits = client.commit.list(stream.id, limit=100)
 
-
     # 04 GET OBJECTS
     latest_commit = commits[0]
     object_id = latest_commit.referencedObject
@@ -35,7 +34,6 @@ def speck_viewer(API_KEY,SERVER, STREAM, USER_STRING):
         return st.components.v1.iframe(src=embed_src, height=height)
 
     commit2viewer(stream, commits[0])
-
 
 '''EXAMPLE USE CASE'''
 # API_KEY = os.getenv('SPECKLE_API')
