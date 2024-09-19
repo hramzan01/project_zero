@@ -22,10 +22,26 @@ st.title("PROJECT ZERO: Carbon Calculator")
 API_KEY = os.getenv('SPECKLE_API')
 SERVER = 'speckle.xyz'
 STREAM = 'PZ_Beta'
-USER_STRING = 'Building'
 
 # Load the speckle viewer
-speck_viewer(API_KEY,SERVER, STREAM, USER_STRING)
+# speck_viewer(API_KEY,SERVER, STREAM)
+streams, stream, branches, commits, speckle_object = speck_viewer(API_KEY,SERVER, STREAM)
+
+'''streams'''
+st.write(streams)
+
+'''stream'''
+st.write(stream)
+
+'''branches'''
+st.write(branches)
+
+'''commits'''
+st.write(commits)
+
+'''speckle_object'''
+st.write(speckle_object)
+
 
 # load the carbon table
 carbon_data = 'carbon/data/ICE_SPICE.csv'
