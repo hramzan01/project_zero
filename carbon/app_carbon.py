@@ -27,21 +27,13 @@ STREAM = 'PZ_Beta'
 # speck_viewer(API_KEY,SERVER, STREAM)
 streams, stream, branches, commits, speckle_object = speck_viewer(API_KEY,SERVER, STREAM)
 
-'''streams'''
-st.write(streams)
+stream_collection = [str(i).split()[4] for i in streams]
+stream = st.selectbox('Select a stream', stream_collection)
 
-'''stream'''
-st.write(stream)
-
-'''branches'''
-st.write(branches)
-
-'''commits'''
-st.write(commits)
-
-'''speckle_object'''
-st.write(speckle_object)
-
+# st.write(stream)
+# st.write(branches)
+# st.write(commits)
+# st.write(speckle_object)
 
 # load the carbon table
 carbon_data = 'carbon/data/ICE_SPICE.csv'
