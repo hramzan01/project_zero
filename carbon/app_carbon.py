@@ -1,8 +1,7 @@
 import streamlit as st
 import os
 import pandas as pd
-from speck.main import speck_viewer
-from PIL import Image
+from speck.main import speck_data, speck_viewer
 
 
 # Set the page layout
@@ -23,17 +22,21 @@ API_KEY = os.getenv('SPECKLE_API')
 SERVER = 'speckle.xyz'
 STREAM = 'PZ_Beta'
 
-# Load the speckle viewer
-# speck_viewer(API_KEY,SERVER, STREAM)
-streams, stream, branches, commits, speckle_object = speck_viewer(API_KEY,SERVER, STREAM)
+# Load the speckle data
+streams, stream, branches, commits, speckle_object = speck_data(API_KEY, SERVER, STREAM)
 
 stream_collection = [str(i).split()[4] for i in streams]
-stream = st.selectbox('Select a stream', stream_collection)
+selected_stream = st.selectbox('Select a stream', stream_collection)
 
-# st.write(stream)
-# st.write(branches)
-# st.write(commits)
-# st.write(speckle_object)
+st.write(stream)
+st.write(branches)
+st.write(commits)
+st.write(speckle_object)
+
+# Load the speckle viewer
+speck_viewer(SERVER, stream, commits[0])
+
+
 
 # load the carbon table
 carbon_data = 'carbon/data/ICE_SPICE.csv'
@@ -68,3 +71,6 @@ st.bar_chart(df_chart.set_index('Sub-material'), height=700)
 
 
 # drop down menu for material selection
+# need to figure out the best way to display the data but how to filter it?
+
+# st.write('This is a test')

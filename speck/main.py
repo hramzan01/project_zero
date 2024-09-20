@@ -7,7 +7,8 @@ from specklepy.api.credentials import get_account_from_token
 from specklepy.transports.server import ServerTransport
 from specklepy.core.api import operations
 
-def speck_viewer(API_KEY,SERVER, STREAM):
+
+def speck_data(API_KEY,SERVER, STREAM):
 
     # 01 CLIENT
     client = SpeckleClient(host=SERVER)
@@ -28,15 +29,32 @@ def speck_viewer(API_KEY,SERVER, STREAM):
     transport = ServerTransport(client=client, stream_id=stream.id)
     speckle_object = operations.receive(object_id, transport)
 
-    # 05 VIEWER👁‍🗨
-    def commit2viewer(stream, commit, height=800) -> str:
-        # embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true&filter=%7B%22propertyInfoKey%22%3A%22userStrings.{USER_STRING}%22%7D' # how to filter by a property
-        embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true'
-        return st.components.v1.iframe(src=embed_src, height=height)
+    # # 05 VIEWER👁‍🗨
+    # def commit2viewer(stream, commit, height=800) -> str:
+    #     # embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true&filter=%7B%22propertyInfoKey%22%3A%22userStrings.{USER_STRING}%22%7D' # how to filter by a property
+    #     embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true'
+    #     return st.components.v1.iframe(src=embed_src, height=height)
 
-    commit2viewer(stream, commits[0])
+    # commit2viewer(stream, commits[0])
 
     return(streams, stream, branches, commits, speckle_object)
+
+#////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+# 05 VIEWER👁‍🗨
+def speck_viewer(SERVER, stream, commit, height=800) -> str:
+    # embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true&filter=%7B%22propertyInfoKey%22%3A%22userStrings.{USER_STRING}%22%7D' # how to filter by a property
+    embed_src = f'https://{SERVER}/embed?stream={stream.id}&commit={commit.id}&autoplay=true'
+    return st.components.v1.iframe(src=embed_src, height=height)
+
+# speck_viewer(SERVER, stream, commits[0])
+
+
+
+
+
+
+
 
 '''EXAMPLE USE CASE'''
 # API_KEY = os.getenv('SPECKLE_API')
